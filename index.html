@@ -1,0 +1,973 @@
+<!-- <?php
+	$bg = array('fundos/bg1.jpg', 'fundos/bg2.jpg', 'fundos/bg3.jpg', 'fundos/bg4.jpg', 'fundos/bg5.jpg', 'fundos/bg6.jpg', 'fundos/bg7.jpg', 'fundos/bg8.jpg' ); // array of filenames
+
+	$i = rand(0, count($bg)-1); // generate random number size of the array
+	$selectedBg = "$bg[$i]"; // set variable equal to which random filename was chosen
+?> -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:x2="http://www.w3.org/2002/06/xhtml2" xmlns:fb="http://ogp.me/ns/fb#">
+
+	<!-- início das informações da página -->
+	<head>
+
+		<!-- GOOGLE TAGS -->
+		<meta name="description" content="Cursos de cerâmica e vidragem artesanal" />
+		<meta name="keywords" content="arte cerâmica curso vidragem barro vidro" />
+
+		<meta name="author" content="Barreto Espaço Cerâmico" />
+		<meta name="copyright" content="" />
+		<meta name="application-name" content="Barreto Espaço Cerâmico" />
+
+		<!-- FACEBOOK TAGS -->          
+		<meta property="og:title" content="Barreto Espaço Cerâmico" />
+		<meta property="og:type" content="article" />
+		<meta property="og:image" content="imagens/logo.png" />
+		<meta property="og:url" content="http://barretoespacoceramico.com.br" />
+		<meta property="og:description" content="Cursos de cerâmica e vidragem artesanal" />
+
+		<!-- TWITTER TAGS -->          
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content="Barreto Espaço Cerâmico" />
+		<meta name="twitter:description" content="Cursos de cerâmica e vidragem artesanal" />
+		<meta name="twitter:image" content="imagens/logo.png" />
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<title>Barreto Espaço Cerâmico</title>
+
+		<meta name="title" content="Barreto Espaço Cerâmico" />
+
+		<meta name="description" content="Cursos de cerâmica e vidragem artesanal">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+		<link rel="image_src" href="imagens/icon.png" />
+
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+
+		<link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+
+		<link rel="shortcut icon" href="favicon.ico">
+
+		<style type="text/css">
+			<!--
+			body {
+				width: 100%;
+				height: 100%;
+				/*background: url(<?php echo $selectedBg; ?>) no-repeat;*/
+				background: url(fundos/bg3.jpg) no-repeat;
+				background-size: 100%;
+				background-attachment:fixed;
+				background-position: center 0;
+				margin: 0px;
+				font-family: 'Arimo', sans-serif, Arial;
+				font-size: 18px;
+			}
+			@media screen and (max-width: 1280px) {
+				body {background-size: 1600px;}
+			}
+			-->
+		</style>
+
+		<!-- Add jQuery library -->
+		<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+
+		<!-- Add fancyBox main JS and CSS files -->
+		<script type="text/javascript" src="js/fancybox/jquery.fancybox.js?v=2.1.3"></script>
+		<link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css?v=2.1.2" media="screen" />
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				/*
+				 *  Simple image gallery. Uses default settings
+				 */
+
+				$('.fancybox').fancybox();
+
+				/*
+				 *  Different effects
+				 */
+
+				// Change title type, overlay closing speed
+				$(".fancybox-effects-a").fancybox({
+					helpers: {
+						title : {
+							type : 'outside'
+						},
+						overlay : {
+							speedOut : 0
+						}
+					}
+				});
+
+				// Disable opening and closing animations, change title type
+				$(".fancybox-effects-b").fancybox({
+					openEffect  : 'none',
+					closeEffect	: 'none',
+
+					helpers : {
+						title : {
+							type : 'over'
+						}
+					}
+				});
+
+				// Set custom style, close if clicked, change title type and overlay color
+				$(".fancybox-effects-c").fancybox({
+					wrapCSS    : 'fancybox-custom',
+					closeClick : true,
+
+					openEffect : 'none',
+
+					helpers : {
+						title : {
+							type : 'inside'
+						},
+						overlay : {
+							css : {
+								'background' : 'rgba(238,238,238,0.85)'
+							}
+						}
+					}
+				});
+
+				// Remove padding, set opening and closing animations, close if clicked and disable overlay
+				$(".fancybox-effects-d").fancybox({
+					padding: 0,
+
+					openEffect : 'elastic',
+					openSpeed  : 150,
+
+					closeEffect : 'elastic',
+					closeSpeed  : 150,
+
+					closeClick : true,
+
+					helpers : {
+						overlay : null
+					}
+				});
+
+				/*
+				 *  Button helper. Disable animations, hide close button, change title type and content
+				 */
+
+				$('.fancybox-buttons').fancybox({
+					openEffect  : 'none',
+					closeEffect : 'none',
+
+					prevEffect : 'none',
+					nextEffect : 'none',
+
+					closeBtn  : false,
+
+					helpers : {
+						title : {
+							type : 'inside'
+						},
+						buttons	: {}
+					},
+
+					afterLoad : function() {
+						this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+					}
+				});
+
+
+				/*
+				 *  Thumbnail helper. Disable animations, hide close button, arrows and slide to next gallery item if clicked
+				 */
+
+				$('.fancybox-thumbs').fancybox({
+					prevEffect : 'none',
+					nextEffect : 'none',
+
+					closeBtn  : false,
+					arrows    : false,
+					nextClick : true,
+
+					helpers : {
+						thumbs : {
+							width  : 50,
+							height : 50
+						}
+					}
+				});
+
+				/*
+				 *  Media helper. Group items, disable animations, hide arrows, enable media and button helpers.
+				*/
+				$('.fancybox-media')
+					.attr('rel', 'media-gallery')
+					.fancybox({
+						openEffect : 'none',
+						closeEffect : 'none',
+						prevEffect : 'none',
+						nextEffect : 'none',
+
+						arrows : false,
+						helpers : {
+							media : {},
+							buttons : {}
+						}
+					});
+
+				/*
+				 *  Open manually
+				 */
+
+				$("#fancybox-manual-a").click(function() {
+					$.fancybox.open('1_b.jpg');
+				});
+
+				$("#fancybox-manual-b").click(function() {
+					$.fancybox.open({
+						href : 'iframe.html',
+						type : 'iframe',
+						padding : 5
+					});
+				});
+
+				$("#fancybox-manual-c").click(function() {
+					$.fancybox.open([
+						{
+							href : '1_b.jpg',
+							title : 'My title'
+						}, {
+							href : '2_b.jpg',
+							title : '2nd title'
+						}, {
+							href : '3_b.jpg'
+						}
+					], {
+						helpers : {
+							thumbs : {
+								width: 75,
+								height: 50
+							}
+						}
+					});
+				});
+			});
+		</script>
+		<style type="text/css">
+			.fancybox-custom .fancybox-skin {
+				box-shadow: 0 0 50px #222;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div><img id="logo" src="imagens/logo.png" /></div>
+		
+		<!-- MENU TOP -->
+		<div id="menu-top-fundo"></div>
+
+		<div id="menu-top">
+			<a id='historicoBtn' href="#historico" class="menu-link-top">Histórico</a>
+			<a id='objetivosBtn' href="#objetivos" class="menu-link-top">Objetivos</a>
+			<a id='cursosBtn' href="#cursos" class="menu-link-top">Cursos</a>
+			<a id='equipeBtn' href="#equipe" class="menu-link-top">Equipe</a>
+			<a id='espaco_fisicoBtn' href="#espaco_fisico" class="menu-link-top">Espaço Físico</a>
+			<!--<a href="#atualidades" class="menu-link-top">Atualidades</a>-->
+			<!--<a href="#imprensa" class="menu-link-top">Imprensa</a>-->
+			<a id='galeriaBtn' href="#galeria" class="menu-link-top">Galeria</a>
+			<a id='depoimentosBtn' href="#depoimentos" class="menu-link-top">Depoimentos</a>
+			<a id='contatoBtn' href="#contato" class="menu-link-top">Contato</a>
+		</div>
+
+		<!--<div id="rodape"></div>-->
+
+		<!-- HISTÓRICO -->
+		<div style="margin-top:1080px; margin-bottom:100px;" id="historico">&nbsp;</div>
+		<div class="container">
+			<div class="content-wrap">
+				<a href="#top" class="close-x"></a>
+				<img class="no-border" src="imagens/borda-noveau1.png" style="display:block; margin:0 auto 30px auto;"/>
+				
+				<h1>Histórico</h1>
+
+				<p><img class="no-border" src="imagens/icone-pequeno.png"/>Em outubro de 2005 começou a reforma de uma casa construída em 1954, visando a instalação de um espaço para pesquisa e desenvolvimento da Cerâmica artística e artesanal.</p>
+
+				<p>Em 2008, houve a inauguração, com o evento: “Batismo das salas”. Primeira confraternização do espaço, onde as pessoas homenageadas tiveram seus nomes colocados na entrada de cada sala.</p>
+
+				<p>Em 2008, também começaram os cursos de Modelagem em barro, Revestimentos Cerâmicos e Modelagem em Gesso. Em janeiro de 2012, passou a contar com mais uma forma de expressão artística: Vidraria Artesanal.</p>
+
+				<p>Localizado na Rua Vicente da Fontoura, nº. 779, no Bairro Santana, na Cidade de Porto Alegre – RS – Brasil, dispõe de salas amplas e bem iluminadas, adaptadas ao fazer cerâmico. Como maquinário, disponibiliza Forno elétrico de média temperatura (1200ºC), Maromba, Torno elétrico, Extrusora e Plaqueira, bem como uma pequena biblioteca para consulta local, formada principalmente por livros de cerâmica.</p>
+			
+				<img class="no-border" src="imagens/borda-noveau.png" style="display:block; margin:80px auto 0 auto;"/>
+			</div>
+		</div>
+
+		<!-- OBJETIVOS -->
+		<div style="margin-top:1080px; margin-bottom:100px;" id="objetivos">&nbsp;</div>
+		<div class="container">
+			<div class="content-wrap">
+				<a href="#top" class="close-x"></a>
+				<img class="no-border" src="imagens/borda-noveau1.png" style="display:block; margin:0 auto 30px auto;"/>
+
+				<h1>Objetivos</h1>
+
+				<p><img class="no-border" src="imagens/icone-pequeno.png"/>Mais que um atelier de cerâmica, é a realização de um sonho na forma de um espaço para descobertas, através do conhecimento da materialidade do barro, das possibilidades técnicas e do desenvolvimento da expressão através de cursos de cerâmica.</p>
+
+				<p>Também disponibiliza sua infra-estrutura para reuniões de trabalho, treinamento de equipe e eventos relacionados com Artes Plásticas.</p>
+				
+				<img class="no-border" src="imagens/borda-noveau.png" style="display:block; margin:80px auto 0 auto;"/>
+			</div>
+		</div>
+
+		<!-- CURSOS -->
+		<div style="margin-top:1080px; margin-bottom:100px;" id="cursos">&nbsp;</div>
+		<div class="container">
+			<div class="content-wrap">
+				<a href="#top" class="close-x"></a>
+				<img class="no-border" src="imagens/borda-noveau1.png" style="display:block; margin:0 auto 30px auto;"/>
+
+				<h1>Cursos permanentes</h1>
+
+				<div style="width:100%; margin-left:3%;">
+
+					<div style="float:left; display:inline-block; vertical-align:top; width:50%; margin:auto; display: block;">
+
+						<p><strong><img class="no-border" src="imagens/icone-pequeno.png"/>1 - Cerâmica</strong></p>
+
+					    <p>1.a – Modelagem manual<br>
+					    1.b – Modelagem no torno<br>
+					    1.c – Modelagem em Gesso<br>
+					    1.d – Pintura: engobes e vidrados</p>
+					     
+						<p>Ministrante: Tânia Zara Barreto Moreira</p>
+						<p>Publico Alvo: Adultos<br>
+						Pré-requisito: nenhum<br>
+						Carga horária semanal: 1 encontro de 4 horas<br>
+						Número de alunos por turma: máximo 10<br>
+						Informações: (51) 32176370 e (51) 99998585</p>
+					</div>
+
+					<div style="display:inline-block; vertical-align:top; width:49%;">
+
+						<p><strong><img class="no-border" src="imagens/icone-pequeno.png"/>2 - Vidro</strong></p>
+
+				    	<p>2.a – Vidraria artesanal</p>
+
+						<p>Ministrante: Verônica Sehbe Rizzo</p>
+						<p>Publico Alvo: Adultos<br>
+						Pré-requisito: nenhum<br>
+						Carga horária semanal: 1 encontro de 4 horas<br>
+						Número de alunos por turma: máximo 3<br>
+						Informações: (51) 32176370 e (51) 83210201</p>
+						<p>*Curso atualmente indisponível. Entre em contato para deixar seu nome na lista de espera.</p>
+					</div>
+				</div>
+
+				<img class="no-border" src="imagens/borda-noveau.png" style="display:block; margin:80px auto 0 auto;"/>
+			</div>
+		</div>
+
+		<!-- EQUIPE -->
+		<div style="margin-top:1080px; margin-bottom:100px;" id="equipe">&nbsp;</div>
+		<div class="container">
+			<div class="content-wrap">
+				<a href="#top" class="close-x"></a>
+				<img class="no-border" src="imagens/borda-noveau1.png" style="display:block; margin:0 auto 30px auto;"/>
+
+				<h1>Equipe</h1>
+
+				<div style="width:80%; margin-left:10%;">
+
+					<div style="float:left; display:inline-block; text-align:center; vertical-align:top; width:50%; margin:auto; display: block;">
+
+						<p><img class="no-border" src="imagens/icone-pequeno.png"/><strong>Tânia Zara Barreto Moreira</strong><br>(Coordenadora/Professora)</p>
+
+					    <img src="imagens/tania.jpg">
+
+					    <h4><a id='taniaBtn' href="#tania"  target="_parent">Currículo</a>
+					    <br><a id='galeria_taniaBtn' href="#galeria_tania"  target="_parent">Galeria</a></h4>
+					</div>
+
+					<div style="display:inline-block; text-align:center; vertical-align:top; width:49%;">
+
+						<p><img class="no-border" src="imagens/icone-pequeno.png"/><strong>Veronica Rizzo</strong><br>(Professora)</p>
+
+					    <img src="imagens/veronica.jpg">
+
+					    <h4><a id='veronicaBtn' href="#veronica" target="_parent">Currículo</a>
+					    <br><a id='galeria_veronicaBtn' href="#galeria_veronica" target="_parent">Galeria</a></h4>
+					</div>
+
+					<p style="text-align:center;"><img class="no-border" src="imagens/icone-pequeno.png"/><strong>Vitor Núñez</strong><br>(Programador visual)</p>
+				</div>
+				
+				<img class="no-border" src="imagens/borda-noveau.png" style="display:block; margin:80px auto 0 auto;"/>
+			</div>
+		</div>
+
+		<!-- PERFIL TANIA -->
+		<div style="margin-top:1080px; margin-bottom:100px;" id="tania">&nbsp;</div>
+		<div class="container">
+			<div class="content-wrap">
+				<a href="#top" class="close-x"></a>
+				<img class="no-border" src="imagens/borda-noveau1.png" style="display:block; margin:0 auto 30px auto;"/>
+
+				<h1>Tânia Zara Barreto Moreira</h1>
+
+				<div style="margin-left:3%;">
+
+					<div style="display:inline-block; width:60%;">
+
+						<p>Naturalidade: Bagé – RS</p>
+						<p>Nacionalidade: Brasileira</p>
+						<p>E-mail:	zabarreto@yahoo.com.br</p>
+						<p>Residência atual:  Porto Alegre – RS - Brasil</p>
+					</div>
+
+					<div style="display:inline-block; vertical-align:top; margin-left:100px; margin-top:20px">
+
+					    <img src="imagens/tania.jpg">
+					</div>
+
+					<p><img class="no-border" src="imagens/icone-pequeno.png"/><strong><u>Formação  no  campo  das  Artes  Plásticas</u></strong></p>
+
+					<p><strong>1 – Formação de nível superior:</strong></p>
+
+					<p>1973 - Bacharelado em Artes Plásticas – Escultura
+						<br>Universidade Federal do Rio Grande do Sul – Porto Alegre/RS</p>
+					<p>1976 - Licenciatura em Educação Artística – Habilitação em Artes Plásticas
+					   	<br>Universidade Federal do Rio Grande do Sul – Porto Alegre/RS</p>
+
+					<strong>2 – Outros Cursos:</strong>
+
+					<p>1970 - Escultura em cimento,  ministrado por Sonia Ebling
+					   <br>Instituto de Artes da UFRGS – Porto Alegre/RS</p>
+					<p>1971	- Comportamento Arcaico Brasileiro, Barroco Nordestino e Arte Cemiterial, ministrado por: Clarival do Prado Valadares.
+						<br>UFRGS - POA</p>
+					<p>1975 - Cerâmica: Modelagem e Esmalte, ministrado por Vilma Villaverde
+					   <br>Instituto de Artes da UFRGS – Porto Alegre/RS</p>
+					<p>1976	- Curso de Escultura – Festival de Inverno de Ouro Preto – MG, ministrado por: Décio Mauro Lima
+						<br>- Modelagem em Cera, ministrado por Sônia Ebling - POA</p>
+					<p>1979 - Linguagem Visual, ministrado por Júlio Plaza
+					   <br>Universidade de Caxias do Sul/RS</p>
+					<p>1980 - Cerâmica e Esmaltação, ministrado Leo Tovella. Kerameikos – Escola de Arte e Atelier - POA</p>
+					<p>1981 - Cerâmica Artística, ministrado por Jorge Fernando Chitti
+					   <br>Atelier de Cerâmica Artística Francesca C. Ducceschi - POA
+					<p>1983 - Curso de Cerâmica, ministrado por Megume Yuasa
+					   <br>Universidade de Caxias do Sul/RS</p>
+					<p>1984 - Reflexões sobre o ver – ministrado por Megume Yuasa
+					   <br>Museu de Arte do Rio Grande do Sul e ACERGS – Porto Alegre/RS</p>
+					<p>1985 - Leitura de Obra, ministrado por Fayga Ostrower
+					   <br>Museu de Arte do Rio Grande do Sul – MARGS. Porto Alegre/RS</p>
+					<p>1991 - Teoria e Prática de Esmaltes, ministrado por Frieda  Dourian
+					   <br>Promovido pela ACERGS. Porto Alegre/RS</p>
+					<p>1995 - Pastel Cerâmico, ministrado por Francesca C. Ducceschi - POA</p>
+
+					<p><img class="no-border" src="imagens/icone-pequeno.png"/><strong><u>Estágios</u></strong></p>
+
+					<p>1978 - Ferro Enammel do Brasil SA
+					   <br>São Bernardo do Campo - SP</p>
+					<p>1980 - Escola SENAI Armando de Arruda Pereira
+					   <br>São Caetano do Sul - SP</p>
+					<p>1986 - Degussa SA  - Divisão Bragussa, Produtos Químicos e Cerâmicos
+					   <br>Americana/SP</p>
+
+					<p><img class="no-border" src="imagens/icone-pequeno.png"/><strong><u>Experiências profissionais</u></strong></p>
+
+					<p>1974 a 1979- Universidade de Caxias do Sul
+					    <br>Cargo: Professora de Cerâmica</p>
+					<p>1980 a 2002 - Instituto de Artes da Universidade Federal do Rio Grande do Sul 
+					    <br>Cargo: Professor Adjunto – Ref. 03 – Professora de Cerâmica
+					    <br>Aposentadoria – agosto de 2002</p>
+
+					<p><img class="no-border" src="imagens/icone-pequeno.png"/><strong><u>Exposições coletivas</u></strong></p>
+
+					<p>1971 - Salão do Instituto de Artes – UFRGS – Porto Alegre/RS</p>
+					<p>1975 - “Panorama das Artes Plásticas de Porto Alegre” – Atelier Ponto de Artes.
+					    <br>Porto Alegre/RS
+						<br>- Coletiva de Artistas Gaúchos – Galeria Alfred. Caxias do Sul/RS</p>
+					<p>1976 - Coletiva dos participantes do 10º Festival de Inverno de Ouro Preto – MG</p>
+					<p>1977 - “Mostra de Arte” – Caxias do Sul/RS</p>
+					<p>1983 - “Arte na Rua” – Porto Alegre/RS</p>
+					<p>1984 - “Arte na Rua” – Porto Alegre/RS</p>
+					<p>1986 - Cerâmica: Pesquisa e Expressão – Museu Universitário – UFRGS - Porto Alegre/RS</p>
+					<p>1989 - 3º Panorama da ACERGS – Centro Municipal de Cultura – Porto Alegre/RS</p>
+					<p>1993 - Sete Ceramistas – Espaço Cultural Jorge Zanatto
+					   <br>Fundação Cultural de Criciúma/ SC</p>
+					<p>2002 - Coletiva Grêmio Náutico União – Porto Alegre/RS
+						<br>-“Espanha” – Centro Cultural Brasil Espanha – Porto Alegre/RS</p>
+					<p>2003 Comemoração aos 135 anos de fundação da Sociedade Espanhola de Bagé
+					    <br>Casa de Cultura Pedro Wayne – Bagé – RS
+					  	<br>-  VIII Circuito Internacional de Arte Brasileira – Madri - Espanha
+					  	<br>- IX Panorâmica da Associação dos Ceramistas do Rio Grande do Sul –   ACERGS. Museu de Arte Contemporânea – MAC. Casa de Cultura Mario Quintana. Porto Alegre – RS</p>
+					<p>2004 “MARIANITA – no ensino de muitos caminhos” – Pinacoteca Barão de Santo Ângelo – Instituto de Artes da UFRGS – Porto Alegre - RS
+					     <br>- “Desenho e cerâmica” – Museu da Gravura Brasileira – Bagé – RS
+					     <br>-  8ª Bienal Latino Americana de Cerâmica  - Concórdia – Argentina</p>
+					<p>2005 “ 3ª Mostra Ceramistas da Fronteira” – Sant’Ana do Livramento – RS - Brasil</p>
+					<p>2006 -  X Panorâmica da ACERGS – Centro Municipal de Cultura – Porto Alegre – RS – Brasil
+						<br>- X Panorâmica da ACERGS em Santo Antônio da Patrulha – Museu Antropológico Caldas Júnior – Santo Antônio da Patrulha – RS – Brasil.</p>
+					<p>2008 - Invasores de Espaços – Fundação Ecarta – Porto Alegre – RS – Brasil</p>
+					<p>2009 - Passaporte Cerâmico – A Identidade do Barro – FEEVALE – Novo Hamburgo – RS – Brasil.</p>
+
+					<p><img class="no-border" src="imagens/icone-pequeno.png"/><strong><u>Menções e Prêmios</u></strong></p>
+
+					<p>2003 – Menção Honrosa Internacional MASP - VIII Circuito Internacional de Arte Brasileira.</p>
+					<p>2004 – Segundo Premio – 8ª Bienal Latino Americana de Cerâmica – Argentina.</p>
+
+					<h1 style="margin: 80px 0 0 -40px;"><a id='equipeBtn' href="#equipe"  target="_parent">Voltar</a></h1>
+				</div>
+
+				<img class="no-border" src="imagens/borda-noveau.png" style="display:block; margin:80px auto 0 auto;"/>
+			</div>
+		</div>
+
+		<!-- GALERIA TÂNIA -->
+		<div style="margin-top:1080px; margin-bottom:100px;" id="galeria_tania">&nbsp;</div>
+		<div class="container">
+			<div class="content-wrap">
+				<a href="#top" class="close-x"></a>
+				<img class="no-border" src="imagens/borda-noveau1.png" style="display:block; margin:0 auto 30px auto;"/>
+
+				<h1>Galeria Tânia Zara Barreto Moreira</h1>
+				<div style="text-align:center">
+					<a class="fancybox" href="imagens/galeria_tania/01.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_tania/thumbs/01s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_tania/02.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_tania/thumbs/02s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_tania/03.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_tania/thumbs/03s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_tania/04.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_tania/thumbs/04s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_tania/05.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_tania/thumbs/05s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_tania/06.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_tania/thumbs/06s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_tania/07.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_tania/thumbs/07s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_tania/08.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_tania/thumbs/08s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_tania/09.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_tania/thumbs/09s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_tania/10.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_tania/thumbs/10s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_tania/11.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_tania/thumbs/11s.jpg" alt="" /></a>
+					<h1 style="margin: 80px 0 0 -10px;"><a id='equipeBtn' href="#equipe"  target="_parent">Voltar</a></h1>
+				</div>
+
+				<img class="no-border" src="imagens/borda-noveau.png" style="display:block; margin:80px auto 0 auto;"/>
+			</div>
+		</div>
+
+		<!-- PERFIL VERONICA -->
+		<div style="margin-top:1080px; margin-bottom:100px;" id="veronica">&nbsp;</div>
+		<div class="container">
+			<div class="content-wrap">
+				<a href="#top" class="close-x"></a>
+				<img class="no-border" src="imagens/borda-noveau1.png" style="display:block; margin:0 auto 30px auto;"/>
+
+				<h1>Veronica Rizzo</h1>
+
+				<div style="margin-left:3%;">
+
+					<div style="display:inline-block; width:60%;">
+
+			       		<p><img class="no-border" src="imagens/icone-pequeno.png"/>Natural de Caxias do Sul, Rio Grande do Sul, onde viveu até 2003 quando então mudou-se para o Rio de Janeiro.</p>
+
+			       		<p>Sua formação acadêmica foi entre Caxias do Sul e Porto Alegre,sendo graduada em Musica e Psicologia e Pós Graduada em História da Arte.
+						Seu trabalho sempre teve ligação com a arte, sendo a fundadora e diretora da primeira Galeria de Artes de sua cidade natal, idealizadora e coordenadora de vários movimentos artísticos junto a Universidade de Caxias do Sul, desde 1980.</p>
+					</div>
+
+					<div style="display:inline-block; vertical-align:top; margin-left:100px; margin-top:20px; margin-bottom:20px;">
+
+					    <img src="imagens/veronica.jpg">
+					</div>
+
+					<p>Iniciou–se nas técnicas de Vitro-fusão ano de 2000, quando participou de um Curso de Modelagem em Vidro em Porto Alegre.</p>
+					
+					<p>Desde então seu trabalho baseia-se em muita pesquisa, sempre tentando adaptar seu aprendizado as possibilidades locais, visto que a Vidraria Artesanal no Brasil é pouco desenvolvida, tendo uma grande carência de cursos de formação de vidreiros, bem como bibliografia nacional, materiais e instrumentação adequadas a esse tipo de trabalho.</p>
+					
+					<p>Em 2002 foi responsável pela criação do núcleo de modelagem em Vidro na” Ampliatto “– Espaço de Arte, em Caxias do Sul, onde foi orientadora das Oficinas de Vidro.</p>
+					
+					<p>Em 2004, já residindo no Rio de Janeiro, cria o seu Ateliê do Vidro, onde realiza suas peças utilitárias e artísticas bem como ministra cursos. Participou de várias edições do Circuito de Artes do Jardim Botânico, bem como de exposições coletivas e individuais no próprio atelier.</p>
+					
+					<p>Desde 2008 é a coordenadora geral de um projeto social “ Vidrados no Rio “ aprovado pela “Lei Rouanet” do Ministério da Cultura , onde  ensina Vidraria Artesanal a população de baixa renda. Este projeto foi realizado em 2 cidades do estado do Rio de Janeiro, Porto Real e Quatis e criou uma cooperativa de artesãos vidreiros que continua ativa até o presente momento.</p>
+					
+					<p>Em 2009 criou e executou os acessórios vítreos usados no Desfile da Empresa de Moda Totem do Rio de Janeiro, por ocasião da Rio Fashion Show, lançamento Verão 2010.</p>
+
+					<p>Foi agraciada com a Moção de Congratulações pelo seu trabalho de Reciclagem de Vidro pela Câmara Municipal do Rio de Janeiro em 8 de março de 2007, na pessoa da Vereadora Aspásia Camargo.</p>
+
+					<p>No final de 2012 mudou-se do Rio de Janeiro para Porto Alegre onde atualmente reside e desenvolve seu trabalho em vidro no Barreto Espaço Cerâmico, bem como dá aulas de Vidraria artesanal, promove Oficinas e workshops</p>
+				
+					<h1 style="margin: 80px 0 0 -40px;"><a id='equipeBtn' href="#equipe"  target="_parent">Voltar</a></h1>
+				</div>
+
+				<img class="no-border" src="imagens/borda-noveau.png" style="display:block; margin:80px auto 0 auto;"/>
+			</div>
+		</div>
+
+		<!-- GALERIA VERÔNICA -->
+		<div style="margin-top:1080px; margin-bottom:100px;" id="galeria_veronica">&nbsp;</div>
+		<div class="container">
+			<div class="content-wrap">
+				<a href="#top" class="close-x"></a>
+				<img class="no-border" src="imagens/borda-noveau1.png" style="display:block; margin:0 auto 30px auto;"/>
+
+				<h1>Galeria Veronica Rizzo</h1>
+				<div style="text-align:center">
+					<a class="fancybox" href="imagens/galeria_veronica/01.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/01s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/02.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/02s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/03.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/03s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/04.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/04s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/05.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/05s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/06.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/06s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/07.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/07s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/08.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/08s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/09.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/09s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/10.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/10s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/11.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/11s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/12.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/12s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/13.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/13s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/14.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/14s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/15.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/15s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/16.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/16s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/17.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/17s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/18.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/18s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galeria_veronica/19.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galeria_veronica/thumbs/19s.jpg" alt="" /></a>
+					<h1 style="margin: 80px 0 0 -10px;"><a id='equipeBtn' href="#equipe"  target="_parent">Voltar</a></h1>
+				</div>
+
+				<img class="no-border" src="imagens/borda-noveau.png" style="display:block; margin:80px auto 0 auto;"/>
+			</div>
+		</div>
+
+		<!-- ESPAÇO FÍSICO -->
+		<div style="margin-top:1080px; margin-bottom:100px;" id="espaco_fisico">&nbsp;</div>
+		<div class="container">
+			<div class="content-wrap">
+				<a href="#top" class="close-x"></a>
+				<img class="no-border" src="imagens/borda-noveau1.png" style="display:block; margin:0 auto 30px auto;"/>
+
+				<h1>Espaço Físico</h1>
+				<div style="text-align:center">
+					<p>Ano da construção: 1954</p>
+					<p>Ano da reforma: 2005-2008</p>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/espaco_fisico/01.jpg" data-fancybox-group="gallery" title="Fachada"><img style="margin:16px;" src="imagens/espaco_fisico/thumbs/01s.jpg" alt="" /></a><br />Fachada<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/espaco_fisico/02.jpg" data-fancybox-group="gallery" title="Entrada"><img style="margin:16px;" src="imagens/espaco_fisico/thumbs/02s.jpg" alt="" /></a><br />Entrada<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/espaco_fisico/03.jpg" data-fancybox-group="gallery" title="Sala Marianita - Vidrados"><img style="margin:16px;" src="imagens/espaco_fisico/thumbs/03s.jpg" alt="" /></a><br />Sala Marianita:<br />Vidrados
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/espaco_fisico/04.jpg" data-fancybox-group="gallery" title="Sala Marianita"><img style="margin:16px;" src="imagens/espaco_fisico/thumbs/04s.jpg" alt="" /></a><br />Sala Marianita<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/espaco_fisico/05.jpg" data-fancybox-group="gallery" title="Sala Carolina - Modelagem em barro"><img style="margin:16px;" src="imagens/espaco_fisico/thumbs/05s.jpg" alt="" /></a><br />Sala Carolina:<br />Modelagem em barro
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/espaco_fisico/06.jpg" data-fancybox-group="gallery" title="Sala Rogério - Laboratório"><img style="margin:16px;" src="imagens/espaco_fisico/thumbs/06s.jpg" alt="" /></a><br />Sala Rogério:<br />Laboratório
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/espaco_fisico/07.jpg" data-fancybox-group="gallery" title="Pátio"><img style="margin:16px;" src="imagens/espaco_fisico/thumbs/07s.jpg" alt="" /></a><br />Pátio<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/espaco_fisico/08.jpg" data-fancybox-group="gallery" title="Pátio"><img style="margin:16px;" src="imagens/espaco_fisico/thumbs/08s.jpg" alt="" /></a><br />Pátio<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/espaco_fisico/09.jpg" data-fancybox-group="gallery" title="Pátio"><img style="margin:16px;" src="imagens/espaco_fisico/thumbs/09s.jpg" alt="" /></a><br />Pátio<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/espaco_fisico/10.jpg" data-fancybox-group="gallery" title="Sala Carlos Alberto e Jacqueline - Modelagem em gesso e Torno"><img style="margin:16px;" src="imagens/espaco_fisico/thumbs/10s.jpg" alt="" /></a><br />Sala Carlos Alberto e Jacqueline:<br />Modelagem em gesso e Torno
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/espaco_fisico/11.jpg" data-fancybox-group="gallery" title="Sala Carlos Alberto e Jacqueline"><img style="margin:16px;" src="imagens/espaco_fisico/thumbs/11s.jpg" alt="" /></a><br />Sala Carlos Alberto<br />e Jacqueline
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/espaco_fisico/12.jpg" data-fancybox-group="gallery" title="Sala Anne Auriete - Reuniões e aulas teóricas"><img style="margin:16px;" src="imagens/espaco_fisico/thumbs/12s.jpg" alt="" /></a><br />Sala Anne Auriete:<br />Reuniões e aulas teóricas
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/espaco_fisico/13.jpg" data-fancybox-group="gallery" title="Sala Nilva - Biblioteca"><img style="margin:16px;" src="imagens/espaco_fisico/thumbs/13s.jpg" alt="" /></a><br />Sala Nilva:<br />Biblioteca
+					</div>
+
+					<img class="no-border" src="imagens/borda-noveau.png" style="display:block; margin:80px auto 0 auto;"/>
+				</div>
+			</div>
+		</div>
+
+		<!-- ATUALIDADES 
+		<div style="margin-top:1080px; margin-bottom:100px;" id="atualidades">&nbsp;</div>
+		<div class="container">
+			<div class="content-wrap">
+				<a href="#top" class="close-x"></a>
+				<img class="no-border" src="imagens/borda-noveau1.png" style="display:block; margin:0 auto 30px auto;"/>
+
+				<h1>Atualidades</h1>
+
+				<img class="no-border" src="imagens/borda-noveau.png" style="display:block; margin:80px auto 0 auto;"/>
+			</div>
+		</div>-->
+
+		<!-- IMPRENSA 
+		<div style="margin-top:1080px; margin-bottom:100px;" id="imprensa">&nbsp;</div>
+		<div class="container">
+			<div class="content-wrap">
+				<a href="#top" class="close-x"></a>
+				<img class="no-border" src="imagens/borda-noveau1.png" style="display:block; margin:0 auto 30px auto;"/>
+
+				<h1>Imprensa</h1>
+				<div style="text-align:center">
+					<a class="fancybox" href="imagens/imprensa/01.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/imprensa/thumbs/01s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/imprensa/02.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/imprensa/thumbs/02s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/imprensa/03.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/imprensa/thumbs/03s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/imprensa/04.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/imprensa/thumbs/04s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/imprensa/05.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/imprensa/thumbs/05s.jpg" alt="" /></a>					
+				</div>
+
+				<img class="no-border" src="imagens/borda-noveau.png" style="display:block; margin:80px auto 0 auto;"/>
+			</div>
+		</div>-->
+
+		<!-- GALERIA -->
+		<div style="margin-top:1080px; margin-bottom:100px;" id="galeria">&nbsp;</div>
+		<div class="container">
+			<div class="content-wrap">
+				<a href="#top" class="close-x"></a>
+				<img class="no-border" src="imagens/borda-noveau1.png" style="display:block; margin:0 auto 30px auto;"/>
+
+				<h1>Galeria</h1>
+
+				<div style="text-align:center">
+					<h2>Batismo das Salas (23/11/2008)</h2>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/01.jpg" data-fancybox-group="gallery" title="Sala Marianita"><img style="margin:16px;" src="imagens/salas/thumbs/01s.jpg" alt="" /></a><br />Sala Marianita<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/02.jpg" data-fancybox-group="gallery" title="Marianita"><img style="margin:16px;" src="imagens/salas/thumbs/02s.jpg" alt="" /></a><br />Marianita<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/05.jpg" data-fancybox-group="gallery" title="Sala Carolina"><img style="margin:16px;" src="imagens/salas/thumbs/05s.jpg" alt="" /></a><br />Sala Carolina<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/06.jpg" data-fancybox-group="gallery" title="Carolina"><img style="margin:16px;" src="imagens/salas/thumbs/06s.jpg" alt="" /></a><br />Carolina<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/09.jpg" data-fancybox-group="gallery" title="Sala Rogério"><img style="margin:16px;" src="imagens/salas/thumbs/09s.jpg" alt="" /></a><br />Sala Rogério<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/10.jpg" data-fancybox-group="gallery" title="Rogério"><img style="margin:16px;" src="imagens/salas/thumbs/10s.jpg" alt="" /></a><br />Rogério<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/12.jpg" data-fancybox-group="gallery" title="Sala Carlos Alberto e Jacqueline"><img style="margin:16px;" src="imagens/salas/thumbs/12s.jpg" alt="" /></a><br />Sala Carlos Alberto<br />e Jacqueline
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/13.jpg" data-fancybox-group="gallery" title="Carlos Alberto e Jacqueline"><img style="margin:16px;" src="imagens/salas/thumbs/13s.jpg" alt="" /></a><br />Carlos Alberto<br />e Jacqueline
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/14.jpg" data-fancybox-group="gallery" title="Sala Anne Auriete"><img style="margin:16px;" src="imagens/salas/thumbs/14s.jpg" alt="" /></a><br />Sala Anne Auriete<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/15.jpg" data-fancybox-group="gallery" title="Anne Auriete"><img style="margin:16px;" src="imagens/salas/thumbs/15s.jpg" alt="" /></a><br />Anne Auriete<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/16.jpg" data-fancybox-group="gallery" title="Sala Nilva"><img style="margin:16px;" src="imagens/salas/thumbs/16s.jpg" alt="" /></a><br />Sala Nilva<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/17.jpg" data-fancybox-group="gallery" title="Nilva"><img style="margin:16px;" src="imagens/salas/thumbs/17s.jpg" alt="" /></a><br />Nilva<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/03.jpg" data-fancybox-group="gallery" title="Sala Filhas do Barro"><img style="margin:16px;" src="imagens/salas/thumbs/03s.jpg" alt="" /></a><br />Sala Filhas do Barro<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/04.jpg" data-fancybox-group="gallery" title="Filhas do Barro"><img style="margin:16px;" src="imagens/salas/thumbs/04s.jpg" alt="" /></a><br />Simone<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/07.jpg" data-fancybox-group="gallery" title="Sala Rodrigo Núñez"><img style="margin:16px;" src="imagens/salas/thumbs/07s.jpg" alt="" /></a><br />Sala Rodrigo Nuñes<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/08.jpg" data-fancybox-group="gallery" title="Rodrigo Núñez"><img style="margin:16px;" src="imagens/salas/thumbs/08s.jpg" alt="" /></a><br />Rodrigo Núñez<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/18.jpg" data-fancybox-group="gallery" title="Sala Aníbal"><img style="margin:16px;" src="imagens/salas/thumbs/18s.jpg" alt="" /></a><br />Sala Aníbal<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/salas/19.jpg" data-fancybox-group="gallery" title="Aníbal"><img style="margin:16px;" src="imagens/salas/thumbs/19s.jpg" alt="" /></a><br />Aníbal<br />&nbsp
+					</div>
+				</div>
+				<div style="height:40px;"></div>
+
+				<div style="text-align:center">
+					<h2>Festa de Santo Antônio (13/06/2009)</h2>
+					<a class="fancybox" href="imagens/galerias/01_festa_de_santo_antonio/01.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/01_festa_de_santo_antonio/thumbs/01s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galerias/01_festa_de_santo_antonio/02.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/01_festa_de_santo_antonio/thumbs/02s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galerias/01_festa_de_santo_antonio/03.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/01_festa_de_santo_antonio/thumbs/03s.jpg" alt="" /></a>
+				</div>
+				<div style="height:40px;"></div>
+
+				<div style="text-align:center">
+					<h2>Encontro das ex-colegas do Sèvignè (06/08/2010)</h2>
+					<a class="fancybox" href="imagens/galerias/02_encontro_sevigne/01.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/02_encontro_sevigne/thumbs/01s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galerias/02_encontro_sevigne/02.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/02_encontro_sevigne/thumbs/02s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galerias/02_encontro_sevigne/03.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/02_encontro_sevigne/thumbs/03s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galerias/02_encontro_sevigne/04.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/02_encontro_sevigne/thumbs/04s.jpg" alt="" /></a>
+				</div>
+				<div style="height:40px;"></div>
+
+				<div style="text-align:center">
+					<h2>Aniversário da Mestra (23/04/2012)</h2>
+					<a class="fancybox" href="imagens/galerias/03_niver_da_mestra/01.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/03_niver_da_mestra/thumbs/01s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galerias/03_niver_da_mestra/02.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/03_niver_da_mestra/thumbs/02s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galerias/03_niver_da_mestra/03.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/03_niver_da_mestra/thumbs/03s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galerias/03_niver_da_mestra/04.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/03_niver_da_mestra/thumbs/04s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galerias/03_niver_da_mestra/05.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/03_niver_da_mestra/thumbs/05s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galerias/03_niver_da_mestra/06.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/03_niver_da_mestra/thumbs/06s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galerias/03_niver_da_mestra/07.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/03_niver_da_mestra/thumbs/07s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galerias/03_niver_da_mestra/08.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/03_niver_da_mestra/thumbs/08s.jpg" alt="" /></a>
+				</div>
+				<div style="height:40px;"></div>
+
+				<div style="text-align:center">
+					<h2>Palestra Arte em Vidro (04/07/2013)</h2>
+					<a class="fancybox" href="imagens/galerias/04_palestra_arte_em_vidro/01.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/04_palestra_arte_em_vidro/thumbs/01s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galerias/04_palestra_arte_em_vidro/02.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/04_palestra_arte_em_vidro/thumbs/02s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galerias/04_palestra_arte_em_vidro/03.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/04_palestra_arte_em_vidro/thumbs/03s.jpg" alt="" /></a>
+					<a class="fancybox" href="imagens/galerias/04_palestra_arte_em_vidro/04.jpg" data-fancybox-group="gallery" ><img style="margin:16px;" src="imagens/galerias/04_palestra_arte_em_vidro/thumbs/04s.jpg" alt="" /></a>
+				</div>
+				<div style="height:40px;"></div>
+
+				<div style="text-align:center">
+					<h2>Bazar de Natal (30/11 e 01/12 de 2013)</h2>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/bazar_natal_2013/01.jpg" data-fancybox-group="gallery" title="Convite"><img style="margin:16px;" src="imagens/bazar_natal_2013/thumbs/01s.jpg" alt="" /></a><br />Convite<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/bazar_natal_2013/02.jpg" data-fancybox-group="gallery" title="Ceramicas de Clarice Barata e Silva"><img style="margin:16px;" src="imagens/bazar_natal_2013/thumbs/02s.jpg" alt="" /></a><br />Ceramicas de Clarice<br />Barata e Silva
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/bazar_natal_2013/03.jpg" data-fancybox-group="gallery" title="Cerâmicas de Jacqueline F. Duarte"><img style="margin:16px;" src="imagens/bazar_natal_2013/thumbs/03s.jpg" alt="" /></a><br />Cerâmicas de Jacqueline<br />F. Duarte
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/bazar_natal_2013/04.jpg" data-fancybox-group="gallery" title="Cerâmicas de Alexandra Eckert"><img style="margin:16px;" src="imagens/bazar_natal_2013/thumbs/04s.jpg" alt="" /></a><br />Cerâmicas de<br />Alexandra Eckert
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/bazar_natal_2013/05.jpg" data-fancybox-group="gallery" title="Cerâmica de Tânia Moreira"><img style="margin:16px;" src="imagens/bazar_natal_2013/thumbs/05s.jpg" alt="" /></a><br />Cerâmica de<br />Tânia Moreira
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/bazar_natal_2013/06.jpg" data-fancybox-group="gallery" title="Cerâmica de Marianita T. Linck"><img style="margin:16px;" src="imagens/bazar_natal_2013/thumbs/06s.jpg" alt="" /></a><br />Cerâmica de<br />Marianita T. Linck
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/bazar_natal_2013/07.jpg" data-fancybox-group="gallery" title="Cerâmica de Berenice D. Giollo"><img style="margin:16px;" src="imagens/bazar_natal_2013/thumbs/07s.jpg" alt="" /></a><br />Cerâmica de<br />Berenice D. Giollo
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/bazar_natal_2013/08.jpg" data-fancybox-group="gallery" title="Vidros de Verônica S. Rizzo"><img style="margin:16px;" src="imagens/bazar_natal_2013/thumbs/08s.jpg" alt="" /></a><br />Vidros de<br />Verônica S. Rizzo
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/bazar_natal_2013/09.jpg" data-fancybox-group="gallery" title="Bazar de Natal"><img style="margin:16px;" src="imagens/bazar_natal_2013/thumbs/09s.jpg" alt="" /></a><br />Bazar de Natal<br />&nbsp
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/bazar_natal_2013/10.jpg" data-fancybox-group="gallery" title="Tânia, Verônioca e Jacqueline"><img style="margin:16px;" src="imagens/bazar_natal_2013/thumbs/10s.jpg" alt="" /></a><br />Tânia, Verônica<br />e Jacqueline
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/bazar_natal_2013/11.jpg" data-fancybox-group="gallery" title="Vidros de Verônica S. Rizzo"><img style="margin:16px;" src="imagens/bazar_natal_2013/thumbs/11s.jpg" alt="" /></a><br />Vidros de<br />Verônica S. Rizzo
+					</div>
+				</div>
+				<div style="height:40px;"></div>
+
+				<div style="text-align:center">
+					<h2>Visitas</h2>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/visitas/03.jpg" data-fancybox-group="gallery" title="Professor Hofmann, visita em 9 de janeiro 2008"><img style="margin:16px;" src="imagens/visitas/thumbs/03s.jpg" alt="" /></a><br />Professor Hofmann, visita em<br />9 de janeiro 2008
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/visitas/01.jpg" data-fancybox-group="gallery" title="Anne Auriete, visita em 13 de agosto 2012"><img style="margin:16px;" src="imagens/visitas/thumbs/01s.jpg" alt="" /></a><br />Anne Auriete, visita em<br />13 de agosto 2012
+					</div>
+					<div style="display:inline-block">
+						<a class="fancybox" href="imagens/visitas/02.jpg" data-fancybox-group="gallery" title="João Claudio Cesa, visita em 3 de dezembro 2013"><img style="margin:16px;" src="imagens/visitas/thumbs/02s.jpg" alt="" /></a><br />João Claudio Cesa, visita em<br />3 de dezembro 2013
+					</div>
+				</div>
+
+				<img class="no-border" src="imagens/borda-noveau.png" style="display:block; margin:80px auto 0 auto;"/>
+			</div>
+		</div>
+
+		<!-- DEPOIMENTOS -->
+		<div style="margin-top:1080px; margin-bottom:100px;" id="depoimentos">&nbsp;</div>
+		<div class="container">
+			<div class="content-wrap">
+				<a href="#top" class="close-x"></a>
+				<img class="no-border" src="imagens/borda-noveau1.png" style="display:block; margin:0 auto 30px auto;"/>
+
+				<h1>Depoimentos</h1>
+
+				<h3 style="text-align:center;">BARRETO ESPAÇO CERÂMICO<br />A CONSTRUÇÃO DE UM SONHO</h3>
+
+				<p>&nbsp</p>			
+
+				<p>Este meu 8º atelier, nasceu da necessidade de trabalhar num lugar espaçoso, arejado, com luz natural; onde eu também recebesse amigos, onde pessoas que quisessem aprender a fazer cerâmica pudessem fazê-lo com conforto e num lugar adequado. Onde eu pudesse acomodar meus livros, cultivar plantas, lavar barros e principalmente, modelar várias formas ao mesmo tempo, sem ter preocupações com espaço.</p>
+
+				<p>Em 2005, três anos depois da aposentadoria, resolvi mudar meu atelier, que ficava na Rua Santo Antonio. Era uma casa de 1923, onde pesquisei cerâmica por 20 anos. Era pequena e como a procura  por aulas era grande e o espaço, bastante pequeno, resolvi mudar o atelier para perto de onde moro.</p>
+
+				<p>Uma tarde, passeando com o Kao-ling, meu cachorro, tive dificuldade de tirá-lo da árvore que escolhera para cheirar e fazer outras coisas. Empacou de tal forma, que não insisti e comecei a olhar em volta. Estávamos na frente de uma casa caindo aos pedaços, com placa de venda na janela. Mais tarde, quando conheci a casa por dentro, tive a certeza de que daria um ótimo atelier de cerâmica. Minha busca tinha acabado. No meio de toda aquela deterioração, visualizei o atelier dos meus sonhos. Da compra à finalização, passando pela reforma, foram quatro anos trabalhosos. Mas passaram e o resultado é o BARRETO ESPAÇO CERÂMICO.</p>
+
+				<h3>Porque esse nome?</h3>
+				<p><strong>ESPAÇO</strong> – porque era tudo o que sempre precisei.<br />
+				<p><strong>BARRETO</strong> – por ser meu sobrenome materno, mas também pela sonoridade. Dizem que coincidência não existe, mas o sobrenome do primeiro proprietário dessa casa, também é Barreto. Descobri isso ao ler os documentos  que acompanharam o processo de compra da casa.<br />
+				<p><strong>CERÂMICO</strong> – porque apesar de eu ter imaginado e preparado esse atelier para diversas atividades de arte, a Cerâmica, para mim, é a principal. É o início de tudo, confunde-se com a história do homem, evoluiu com ele sem perder as características originais.</p>
+
+				<p>Ainda sobre o espaço físico do atelier, batizei as salas com o primeiro nome de pessoas importantes e significativas para mim. Fazem parte da minha vida e sem elas eu não seria quem sou.  Fazendo esta lista senti-me abençoada por ter tantas pessoas a agradecer e homenagear.</p>
+
+				<p><strong>Sala de Modelagem – CAROLINA Schrage Nuernberg</strong> – Arquiteta responsável pela reforma do BEC. Filha de um casal muito amigo (Claudete e Névio). Na casa dos avós maternos da Carolina, tive o meu primeiro atelier. Ainda estava na Faculdade, foi um período gostoso. No meio da tarde, havia um chá com quitutes preparados pela dona Irma ou pela dona Ida (avó e bisavó da Carolina). Acredito que vem daí o hábito de tomar chá enquanto faço cerâmica. Algumas vezes recebia a visita da Ana Luisa e do Eduardo, primos da Claudete. Principalmente, o Eduardo influenciou bastante minhas  escolhas em relação ao magistério. Ele era uma criança muito inteligente, adorava dinossauros e enquanto modelava, ia falando as características de cada espécie. Na tentativa de ajudá-lo a modelar “dinossauros”, tive a grata surpresa de descobrir em mim a maneira adequada de explicar como fazer, de buscar soluções. Através da Carolina homenageio e agradeço a toda essa família que me acolheu com tanto carinho e generosidade.</p>
+
+				<p><strong>Sala de Vidrados – MARIANITA Tollens Linck</strong> – minha mestra querida. Em 1969, entrei no Instituto de Artes, decidida a estudar Pintura. Nas primeiras aulas de modelagem, fiquei deslumbrada com o barro. No segundo ano, nas aulas de cerâmica, tive a certeza que era essa a minha praia. Marianita, com seu rigor, disciplina, exigência e exemplo continua até hoje tendo uma importância fundamental na minha vida. Quando foi, por um ano, estudar no Japão, escolheu a mim para substituí-la no Instituto de Artes. Este foi um grande teste. Assumi as disciplinas do Curso de Cerâmica, com toda a segurança e constatei o quanto estava preparada para assumir a tarefa. Depois, já professora efetiva, tive o privilégio de lecionar junto com a mestra até sua aposentadoria. Foi um período de muito trabalho, pesquisa e aquisição de conhecimentos. Em 2009, ganhei as amostras e anotações correspondentes as pesquisas sobre vidrados que a Marianita fez no Japão e aqui em Porto Alegre. Pesquisas estas que são um marco na arte de transformar vidrados comercias, adaptando-os ao uso artístico. Sinto-me depositária de um tesouro. Recuperei todo o mostruário, afixei na sala que leva seu nome e espero que continue servindo como ponto de partida para novas pesquisas e por muitas gerações.</p>
+
+				<p><strong>Sala do Forno – RODRIGO Núñez</strong> – conheci o Rodrigo quando ainda estava na barriga da Beti (Elizabete Cruz Núñez), de quem eu era colega no Instituto de Artes. A Bete tinha um atelier, chamado “Ponto de Arte”, que foi muito importante nas décadas de 70 e 80. Quando me formei, em 1975, fui convidada a participar desse Atelier, lecionando Cerâmica. Muita gente aparecia por lá, principalmente pintores, gravadores, músicos, escultores, publicitários. Lá, muita coisa era programada e decidida. No meio dessa efervescência, meu mundo foi crescendo ao mesmo tempo que o Rodrigo crescia também. Assim como os outros dois irmãos mais velhos, ele era muito criativo e dono de uma fértil imaginação. Circulava pelas salas com naturalidade, menos na sala de cerâmica, porque tinha medo e um certo fascínio, que o fazia ficar na porta espiando. Já adulto, contou que para ele o forno era um monstro com uma boca enorme, pronta para me engolir, quando eu colocava as peças dentro. Para ele, eu parecia uma bruxa, misturando pós, que viravam líquidos coloridos. Eu não entendia aquela atitude ao mesmo tempo arredia e fascinada. Mas tentei atraí-lo, colocando bolinhas de barro na porta da sala. Cada dia eu as colocava mais para dentro. O Rodrigo pegava o barro e saia correndo sem dizer nada. Eu também não dizia nada. Assim foi,  até que coloquei a bolinha sobre a mesa onde estava trabalhando. O Rodrigo se aproximou, perguntei se ele sabia o nome da ferramenta que estava na minha mão, ele fez que não com a cabeça, mas não saiu correndo e daí em diante passou a freqüentar a sala de cerâmica para modelar e brincar. Gostava muito de usar minhas luvas de borracha para brincar de Bat-man. Não consigo descrever a emoção que senti, quando ele foi meu aluno na Faculdade. Não foi fácil. A vontade que eu tinha era de continuar colocando bolinhas de barro sobre a mesa e deixá-lo trabalhar a vontade, sem interferir com regras, técnicas, prazos, conteúdos programados, critérios de avaliação comuns a todos os alunos. Muitas vezes, meu coração ficava apertado por não dizer o quanto o trabalho dele era maravilhoso. Quanto me doía ter que exigir mais desenvolvimento técnico, quando para ele o que mais importava era a expressão. Mas sobrevivemos. Hoje ele é professor de cerâmica no Instituto de Artes. Como artista faz um trabalho cada vez melhor. Como professor, criou seu caminho, segundo suas crenças e verdades. Dele recebi a homenagem mais emocionante da minha vida, na sua exposição de 2010. Da Bete, na mesma ocasião, recebi a seguinte frase como presente: “Saiu bom este teu filho”. Escolhi a sala do forno para homenagear o Rodrigo e família, porque num atelier de cerâmica, o forno é o coração, onde a matéria se transforma, onde o barro passa a ser cerâmica, definitivamente.</p>
+
+				<p><strong>Sala laboratório – ROGÉRIO Pessoa  Sartori</strong> – o aluno com quem mais discuti. Nunca gostei de brigar, de impor. Sempre acreditei que com suavidade também se atinge objetivos. Desde as primeiras aulas percebi no Rogério uma enorme criatividade, seus trabalhos tinham uma originalidade ligada a um frescor tão grande, que era impossível ignorar. Mas parece que só eu via. Quando insistia, recebia evasivas como respostas e, principalmente adiamentos. Como se a vida pudesse esperar, como se um determinado gesto, pudesse ser repetido mais tarde. Quando? Sua preocupação era razoável: depois que estivesse formado em Economia, ganhando dinheiro suficiente para se sustentar e ao seu fazer cerâmico. Mas será que essa hora chegaria? Continuei insistindo, mais que isso, cobrando e a cada exposição do Rogério, sinto que não tenho motivos para me arrepender. O trabalho dele é muito bom e me sinto orgulhosa e em paz.</p>
+
+				<p><strong>Sala de exposições – FILHAS DO BARRO</strong> – sala para exposição. Certa vez, o Rogério pessoa Sartori, no meio de um agradecimento, chamou-me de “minha mãe do barro”, porque eu o havia “parido” para a cerâmica. Tive poucos alunos e desses poucos, até onde eu sei, só ele e o Rodrigo Núñez continuam a fazer cerâmica. Cada um tem seu nome, batizando uma sala do BEC, porque foram alunos especiais. Mas tive muitas alunas, que me enchem de orgulho até hoje. Que também se transformaram em amigas muito queridas. Eram tantas, que escolher um só nome, seria injusto. Assim, usei a expressão criada pelo Rogério, mas no feminino, para homenagear todas as alunas que tive o privilégio de ajudar a encontrar a cerâmica que habitava dentro de si.</p>
+
+				<p><strong>Sala de modelagem em Gesso – CARLOS ALBERTO E JACQUELINE Duarte</strong> – dois anjos da guarda, que entraram na minha vida num momento muito difícil da reforma do atelier: lidar com pedreiro, marceneiro, vidraceiro, serralheiro é muito complicado. A Nilva, minha irmã,  não conseguindo me ajudar, pediu a esse casal amigo, que me socorresse e eles vieram, trazendo a calma que  eu precisava, a sensação de estar protegida, a energia que me faltava e a postura respeitosa, que nem se eu quisesse, conseguiria impor. Além de resolver os problemas da reforma, ganhei dois amigos, que logo, logo se tornaram indispensáveis. A amizade deles só me faz crescer. Tem cheiro de infinito e gosto de eternidade.</p>
+
+				<p><strong>Sala de reuniões – ANNE AURIETE Passos Chalegre</strong> – grande amiga. Baixinha como eu, mas com a força e a coragem de um gigante. Ela é como a mão que toca o piano, a maior parte das vezes com leveza, delicadeza e sensibilidade impressionante. Outras vezes, com uma dureza precisa, com um rigor controlado, com violência objetiva. Ela “é”, jamais procura “ser”. Nossa amizade começou no Colégio Sévignè, onde fomos colegas. De lá fomos para o Instituto de Artes, ela, para o curso de piano e eu, para Artes Plásticas. No segundo ano da Faculdade, a Anne foi estudar música na Alemanha, onde mora e trabalha até hoje. Apesar da distância, nossa amizade continuou viva, sendo cultivada por cartas, alguns telefonemas, e-mails, skype e oito encontros aqui em Porto Alegre e um em Paris, em 48 anos. Sua força me estimula. O carinho e principalmente o respeito com que me trata me protegem. Foi uma das primeiras amizades que fiz chegando a Porto Alegre. Através da Anne, homenageio todas as minhas  grandes amigas, principalmente Mara Caruso, Anico Herskowitz, Marisa Veeck, Verônica Rizzo e Maria Elizabeth Friedrich, listadas por ordem de chegada na minha vida.</p>
+
+				<p><strong>Biblioteca – NILVA Moreira Lopes</strong> – minha irmã. Fisicamente somos muito parecidas, mas em termos de personalidade somos o oposto uma da outra, como se fossemos duas almas num mesmo corpo. A Nilva é prática, decidida, racional. Anda na velocidade da luz e possui uma coragem imensa e uma força de vontade, maior ainda. É admirável seu raciocínio rápido, sua capacidade de aprender coisas novas e de estar sempre atualizada e, principalmente informatizada.   A pessoa mais próxima de mim, a que me escuta, me apóia.  Batizar a Biblioteca com o nome da Nilva foi uma escolha fácil. Fica ao lado da minha sala, é a mais bonita do atelier, é a que consigo manter mais bem arrumada uma vez que barro não combina com livros e computador, mas combina com ela, também em harmonia e  generosidade.</p>
+
+				<p><strong>Sala da Tânia – ANÍBAL Simões Barreto</strong> – minha sala, uma das mais iluminadas e arejadas, onde nas tardes de inverno trabalho com o sol acariciando minhas costas, recebeu o nome do meu avô materno. Vivia na campanha, em Bagé. Tinha um respeito imenso pela natureza, criava gado, ovelha, porco, galinha, tinha uma horta e um pomar, o que era raro naquelas paragens. Previa as mudanças do tempo, observando as nuvens, o movimento das árvores, o céu, o cheiro do vento e o comportamento dos animais. Comportava-se como se fosse mais um dos elementos desse pequeno universo. Não passava a impressão de ser o dono e o senhor todo poderoso. Para ele, terra não se vende, se herda, povoa e multiplica. Quando vinha nos visitar, chegava com a mão direita estendida para nos abençoar e a esquerda enfiada no bolso da bombacha, guardando dois pacotes de balas, um para mim e outro para minha irmã. Nunca esqueci a textura daquela pele enrugada e áspera e do cheiro de terra da mão do meu avô, a mão que eu beijava pedindo a benção. Muitas vezes penso que do respeito e admiração por ele, nasceu minha escolha pela cerâmica. O cheiro do barro continua me encantando, assim como as texturas que descubro, ou nele imprimo. As etapas do “fazer cerâmico” se assemelham aos ciclos da vida. Tudo tem seu tempo, não adianta acelerar nem retardar. Quando o ceramista trabalha “com” o barro, o resultado é bem diferente de quando trabalha “o” barro.</p>
+
+				<p>Nunca tive dúvidas de que minha “terra” é a cerâmica que pratico desde os 18 anos. Mas ainda busco respostas para estas perguntas:</p>
+				
+				<p>Como povôo minha “terra”?<br />
+				Como a multiplico?</p>
+
+				<p style="text-align:right;"><i>Tânia Moreira</i></p>
+
+				<img class="no-border" src="imagens/borda-noveau.png" style="display:block; margin:80px auto 0 auto;"/>
+			</div>
+		</div>
+
+		<!-- CONTATO -->
+		<div style="margin-top:1080px; margin-bottom:100px;" id="contato">&nbsp;</div>
+		<div class="container">
+			<div class="content-wrap">
+				<a href="#top" class="close-x"></a>
+				<img class="no-border" src="imagens/borda-noveau1.png" style="display:block; margin:0 auto 30px auto;"/>
+
+				<h1>Contato</h1>
+
+				<div style="text-align:center">
+					<h3>Fale com a Tânia</h3>
+
+					<p>(51) 32176370 e (51) 99998585</p>
+					<p>Email: bec.vf779@yahoo.com.br</p>
+				</div>
+
+
+				<img class="no-border" src="imagens/borda-noveau.png" style="display:block; margin:80px auto 0 auto;"/>
+			</div>
+		</div>
+
+		<div style="margin-top:20px;">
+			<iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.br/maps?q=Rua+Vicente+da+Fontoura,+n%C2%BA.+779&amp;sll=-30.050968,-51.206063&amp;hl=pt&amp;ie=UTF8&amp;hq=&amp;hnear=R.+Vicente+da+Fontoura,+779+-+Santana,+Porto+Alegre+-+Rio+Grande+do+Sul,+90640-001&amp;ll=-30.051098,-51.206331&amp;spn=0.003348,0.006539&amp;t=m&amp;z=14&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.br/maps?q=Rua+Vicente+da+Fontoura,+n%C2%BA.+779&amp;sll=-30.050968,-51.206063&amp;hl=pt&amp;ie=UTF8&amp;hq=&amp;hnear=R.+Vicente+da+Fontoura,+779+-+Santana,+Porto+Alegre+-+Rio+Grande+do+Sul,+90640-001&amp;ll=-30.051098,-51.206331&amp;spn=0.003348,0.006539&amp;t=m&amp;z=14&amp;source=embed" style="color:#fff;text-align:left">Ver mapa maior</a></small>
+		</div>
+
+		<div style="margin-top:10px;">
+			<iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.br/maps?q=Rua+Vicente+da+Fontoura,+n%C2%BA.+779&amp;layer=c&amp;sll=-30.050968,-51.206063&amp;cbp=12,131.39,,0,0.74&amp;cbll=-30.051095,-51.20633&amp;hl=pt&amp;ie=UTF8&amp;hq=&amp;hnear=R.+Vicente+da+Fontoura,+779+-+Santana,+Porto+Alegre+-+Rio+Grande+do+Sul,+90640-001&amp;ll=-30.051098,-51.206331&amp;spn=0.003348,0.006539&amp;t=m&amp;z=14&amp;panoid=6zgQl12RtgHXfDajZw-LZA&amp;source=embed&amp;output=svembed"></iframe><br /><small><a href="https://maps.google.com.br/maps?q=Rua+Vicente+da+Fontoura,+n%C2%BA.+779&amp;layer=c&amp;sll=-30.050968,-51.206063&amp;cbp=12,131.39,,0,0.74&amp;cbll=-30.051095,-51.20633&amp;hl=pt&amp;ie=UTF8&amp;hq=&amp;hnear=R.+Vicente+da+Fontoura,+779+-+Santana,+Porto+Alegre+-+Rio+Grande+do+Sul,+90640-001&amp;ll=-30.051098,-51.206331&amp;spn=0.003348,0.006539&amp;t=m&amp;z=14&amp;panoid=6zgQl12RtgHXfDajZw-LZA&amp;source=embed" style="color:#fff;text-align:left"></a></small>
+		</div>
+
+		<!-- Scrolldjs -->
+		<script type="text/javascript" src="js/scrolld.js"></script>
+		<script type="text/javascript">
+			$("[id*='Btn']").stop(true).on('click',function(e){e.preventDefault();$(this).scrolld();});
+		</script>
+	</body>
+</html>

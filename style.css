@@ -1,0 +1,168 @@
+h1, h2, h3, h4, strong {
+	color: #52c0d9;
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+hr {
+	border: none;
+	height: 1px;
+	width: 100%;
+	background-color: #53bfd9;
+}
+
+a {
+	text-decoration: none;
+	color: #52c0d9;
+}
+
+a:hover {
+	color: #bababa;
+}
+
+img {
+	border: solid 8px #f9f9f9;
+	
+	-webkit-box-shadow: 0px 5px 15px rgba(50, 50, 50, 0.4);
+	-moz-box-shadow: 0px 5px 15px rgba(50, 50, 50, 0.4);
+	box-shadow: 0px 5px 15px rgba(50, 50, 50, 0.4);
+}
+
+.no-border {
+	border: none !important;
+	
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+}
+
+#logo {
+	position: fixed;
+	width: 58%;
+	height: auto;
+	top: 35%;
+	margin-left: 40.5%;
+	z-index: -10;
+
+	border: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+#menu-top-fundo {
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	height: 60px;
+	background-color: #555;
+	opacity: 0.5;
+	z-index: 20;
+
+	-webkit-box-shadow: 0px 5px 5px rgba(50, 50, 50, 0.3);
+	-moz-box-shadow: 0px 5px 5px rgba(50, 50, 50, 0.3);
+	box-shadow: 0px 5px 5px rgba(50, 50, 50, 0.3);
+}
+
+#menu-top {
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	height: 60px;
+	z-index: 30;
+}
+
+.menu-link-top {
+	display: inline-block;
+	padding: 18px 0px 0px 40px;
+	color: #fff;
+	text-decoration: none;
+	font-size: 20px;
+}
+.menu-link-top:hover {
+	color: #b6d8cb;
+}
+
+.container {
+	/*background-color: #f3f3f3;*/
+	background: url(imagens/textura.jpg) repeat left top;
+	height: auto;
+	margin-top: 100px;
+	padding: 90px 20% 90px 20%;
+	z-index: 15;
+
+	-webkit-box-shadow: 0px 5px 15px rgba(50, 50, 50, 0.8);
+	-moz-box-shadow: 0px 5px 15px rgba(50, 50, 50, 0.8);
+	box-shadow: 0px 5px 15px rgba(50, 50, 50, 0.8);
+}
+
+.content-wrap {
+	width: auto;
+	height: 100%;
+	z-index: 15;
+}
+
+.close-x {
+	background-image: url(imagens/close-x.png);
+	width: 30px;
+	height: 30px;
+	background-size: 100% 100%;
+	margin: -30px 10px 0px 0px;
+	float: right;
+	clear: right;
+	opacity: 0.7;
+}
+.close-x:hover {
+	opacity: 1;
+}
+
+.borda-icone {
+	background-image: url(imagens/icone-pequeno.png);
+	display: block;
+	width: 40px;
+	height: 40px;
+	background-size: 100% 100%;
+	margin: 0 auto;
+}
+
+#rodape {
+	width: 100%;
+	height: 40px;
+	position: fixed;
+	bottom: 0px;
+	background-color: #333;
+	text-align: right;
+	font-size: 13px;
+	color: #fff;
+	opacity: 0.5;
+}
+
+@media screen and (max-width: 1300px) {
+	.menu-link-top {font-size: 16px; padding: 19px 0px 0px 30px;}
+	.container {padding: 90px 10% 90px 10%;}
+}
+
+@media screen and (max-width: 800px) {
+	#logo {margin-left: 18%; width: 80%; position: absolute;}
+	#menu-top-fundo {height: 90px;}
+	.container {padding: 90px 2% 90px 2%;}
+}
+
+@media screen and (max-width: 660px) {
+	.container {padding: 90px 4% 90px 16%;}
+}
+
+@media screen and (max-width: 500px) {
+	#logo {margin-left: 6%; width: 90%;}
+	#menu-top-fundo {height: 130px; position: absolute;}
+	#menu-top {position: absolute;}
+	.container {padding: 90px 8% 90px 8%;}
+}
+
+@media screen and (max-width: 340px) {
+	#logo {margin-top: 46%}
+	#menu-top-fundo {height: 164px;}
+}
